@@ -1,12 +1,9 @@
 {
   "mcpServers": {
     "telegram": {
-      "command": "uvx",
-      "args": ["--from", "xbghc-telegram-mcp", "telegram-mcp"],
-      "env": {
-        "TELEGRAM_BOT_TOKEN": "${TELEGRAM_BOT_TOKEN}",
-        "TELEGRAM_ALLOWED_CHAT_ID": "${TELEGRAM_ALLOWED_CHAT_ID}"
-      }
+      "command": "bun",
+      "args": ["run", "start"],
+      "cwd": "."
     }
   }
 }
