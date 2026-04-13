@@ -105,7 +105,9 @@ const PERMISSION_REPLY_RE = /^\s*(y|yes|n|no)\s+([a-km-z]{5})\s*$/i
 
 const bot = new Bot(TOKEN, {
   client: {
-    baseFetchConfig: PROXY_URL ? { proxy: PROXY_URL } as any : {},
+    ...(PROXY_URL ? {
+      fetch: (url: any, init: any) => fetch(url, { ...init, proxy: PROXY_URL } as any),
+    } : {}),
   },
 })
 let botUsername = ''
