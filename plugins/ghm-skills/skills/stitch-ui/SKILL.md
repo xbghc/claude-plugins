@@ -30,7 +30,7 @@ description: 基于用户需求的 UI 设计 skill。使用 Stitch MCP 生成 UI
 
 ## 重要注意事项
 
-* `generate_screen_from_text` 通常需要 3-15 分钟完成，**超时不代表失败**——后台仍在处理。超时后应每隔 2-3 分钟使用 `list_screens` 轮询检查，在 15 分钟内 `list_screens` 返回空列表是正常的，耐心等待即可
+* `generate_screen_from_text` 通常需要 3-15 分钟完成，**超时不代表失败**——后台仍在处理，生成不会因超时而失败。超时后应每隔 2-3 分钟使用 `list_screens` 轮询检查，在 15 分钟内 `list_screens` 返回空列表是正常的，耐心等待即可，**不要重新发起生成请求**
 * 提示词长度建议控制在 3000 字符以内，超过 5000 字符容易导致组件遗漏
 * 始终使用最新模型 `GEMINI_3_1_PRO`（通过 `modelId` 参数指定）
 * `get_screen` 的 `name` 参数格式为 `projects/{projectId}/screens/{screenId}`
@@ -193,7 +193,7 @@ project/
 
 | 问题 | 解决方案 |
 | --- | --- |
-| 生成超时 | 不要重试——用 `list_screens` 轮询检查，后台可能仍在处理 |
+| 生成超时 | 不要重试——超时不会导致生成失败，用 `list_screens` 每 2-3 分钟轮询，15 分钟内耐心等待 |
 | 提示词过长导致组件遗漏 | 控制在 3000 字符以内，先生成整体再逐步细化 |
 | Stitch 生成失败 | 检查提示词是否包含 `.stitch/DESIGN.md` 中的设计规范 |
 | 跨页面风格不一致 | 确保每次生成都使用了 `.stitch/DESIGN.md` |
