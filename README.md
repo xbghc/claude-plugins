@@ -4,12 +4,17 @@ Personal Claude Code plugin marketplace.
 
 ## Plugins
 
-### ghm-skills
+### stitch-ui
 
-UI design, experience distillation, and frontend development workflows.
+UI design with Stitch MCP. Two-phase delivery: generate screenshots for review, then produce code verified by Playwright.
 
-- **stitch-ui** — UI design with Stitch MCP. Two-phase delivery: generate screenshots for review, then produce code verified by Playwright.
-- **distill** — Extract reusable lessons from session trial-and-error into skills or project docs.
+### distill
+
+Extract reusable lessons from session trial-and-error into skills or project docs.
+
+### gemini-cli
+
+Orchestrate Google's Gemini CLI from Claude Code for code review, web research, and parallel analysis.
 
 ### zotero-mcp
 
@@ -26,7 +31,9 @@ Requires env: `SEMANTIC_SCHOLAR_API_KEY`
 ## Installation
 
 ```
-/plugin install ghm-skills@ghm-plugins
+/plugin install stitch-ui@ghm-plugins
+/plugin install distill@ghm-plugins
+/plugin install gemini-cli@ghm-plugins
 /plugin install zotero-mcp@ghm-plugins
 /plugin install semanticscholar-mcp@ghm-plugins
 ```

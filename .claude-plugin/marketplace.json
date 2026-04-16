@@ -7,10 +7,22 @@
   },
   "plugins": [
     {
-      "name": "ghm-skills",
-      "description": "UI design with Stitch MCP, session experience distillation, frontend development workflows",
-      "source": "./plugins/ghm-skills",
+      "name": "stitch-ui",
+      "description": "UI design with Stitch MCP — two-phase delivery: generate screenshots for review, then produce code verified by Playwright",
+      "source": "./plugins/stitch-ui",
       "category": "design"
+    },
+    {
+      "name": "distill",
+      "description": "Extract reusable lessons from session trial-and-error into skills or project docs",
+      "source": "./plugins/distill",
+      "category": "productivity"
+    },
+    {
+      "name": "gemini-cli",
+      "description": "Orchestrate Google's Gemini CLI from Claude Code for code review, web research, and parallel analysis",
+      "source": "./plugins/gemini-cli",
+      "category": "productivity"
     },
     {
       "name": "zotero-mcp",

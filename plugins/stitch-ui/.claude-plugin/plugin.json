@@ -1,0 +1,10 @@
+{
+  "name": "stitch-ui",
+  "version": "0.1.0",
+  "description": "UI design with Stitch MCP — two-phase delivery: generate screenshots for review, then produce code verified by Playwright",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "ui-design", "stitch", "frontend", "playwright"]
+}

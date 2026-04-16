@@ -1,0 +1,10 @@
+{
+  "name": "distill",
+  "version": "0.1.0",
+  "description": "Extract reusable lessons from session trial-and-error into skills or project docs",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "distill", "experience", "retrospective"]
+}

@@ -11,15 +11,18 @@ This is a personal Claude Code **plugin marketplace** (`ghm-plugins`), containin
 ```
 .claude-plugin/marketplace.json   # Marketplace manifest — lists all plugins
 plugins/
-  ghm-skills/                     # Skills plugin (no MCP server)
-    .claude-plugin/plugin.json    # Plugin metadata (description, keywords)
+  stitch-ui/                      # Skills plugin (one skill per plugin)
+    .claude-plugin/plugin.json
     CLAUDE.md                     # Maintenance rules for this plugin
-    skills/
-      stitch-ui/
-        SKILL.md                  # Skill definition (triggered by Stitch-related requests)
-        references/prompt-guide.md
-      distill/
-        SKILL.md                  # Session experience extraction skill
+    skills/stitch-ui/
+      SKILL.md                    # Skill definition (triggered by Stitch-related requests)
+      references/prompt-guide.md
+  distill/                        # Skills plugin
+    .claude-plugin/plugin.json
+    skills/distill/SKILL.md
+  gemini-cli/                     # Skills plugin
+    .claude-plugin/plugin.json
+    skills/gemini-cli/SKILL.md
   zotero-mcp/                     # MCP server plugin
     .claude-plugin/plugin.json
     .mcp.json                     # MCP server config (npx @xbghc/zotero-mcp)
@@ -29,21 +32,19 @@ plugins/
 ```
 
 **Two types of plugins:**
-- **Skills plugins** (`ghm-skills`): contain `skills/` with `SKILL.md` files that define skill behavior and trigger conditions. No MCP server.
-- **MCP server plugins** (`zotero-mcp`, `semanticscholar-mcp`): contain `.mcp.json` that defines the MCP server command and environment variables.
+- **Skills plugins** (`stitch-ui`, `distill`, `gemini-cli`): contain `skills/` with a single `SKILL.md`. Each skill is its own plugin so users can install them independently.
+- **MCP server plugins** (`zotero-mcp`, `semanticscholar-mcp`, `telegram`): contain `.mcp.json` that defines the MCP server command and environment variables.
 
 ## Key Files
 
 - **`marketplace.json`**: Central registry. Each entry has `name`, `description`, `source` (relative path), and `category`. Must be updated when adding/removing plugins.
-- **`plugin.json`**: Per-plugin metadata (`name`, `version`, `description`, `keywords`). The `description` and `keywords` fields in `ghm-skills` must be updated whenever skills are added/modified/removed.
+- **`plugin.json`**: Per-plugin metadata (`name`, `version`, `description`, `keywords`). Keep these in sync with the plugin's actual contents.
 - **`SKILL.md`**: Frontmatter (`name`, `description`) defines when the skill triggers. The `description` field is critical — it controls skill activation matching.
 - **`.mcp.json`**: MCP server definition with `command`, `args`, and `env` (using `${VAR}` syntax for environment variables).
 
 ## Maintenance Rules
 
-From `plugins/ghm-skills/CLAUDE.md`:
-- When adding/modifying/removing skills, update `plugins/ghm-skills/.claude-plugin/plugin.json` `description` and `keywords` to reflect current skill coverage.
-- Periodically sync `skills/stitch-ui/references/prompt-guide.md` with the official Stitch prompting guide at https://stitch.withgoogle.com/docs/learn/prompting/.
+- Periodically sync `plugins/stitch-ui/skills/stitch-ui/references/prompt-guide.md` with the official Stitch prompting guide at https://stitch.withgoogle.com/docs/learn/prompting/.
 
 ## Adding a New Plugin
 

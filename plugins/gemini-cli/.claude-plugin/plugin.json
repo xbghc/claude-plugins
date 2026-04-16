@@ -1,0 +1,10 @@
+{
+  "name": "gemini-cli",
+  "version": "0.1.0",
+  "description": "Orchestrate Google's Gemini CLI from Claude Code for code review, web research, and parallel analysis",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "gemini-cli", "code-review", "web-research"]
+}
