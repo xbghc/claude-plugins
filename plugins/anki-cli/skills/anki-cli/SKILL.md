@@ -52,6 +52,22 @@ For agents that run without a terminal (pm2, cron, server bots), the interactive
 
 After either, call `anki sync` at least once so `~/.local/share/anki-cli/collection.anki2` exists.
 
+### For agents that can't shell out — use the MCP server
+
+If the agent runtime only supports MCP tool calls (no bash / shell tool), register the bundled MCP server in the host's `mcp.json` instead of invoking the CLI:
+
+```json
+{
+  "mcpServers": {
+    "anki": {
+      "command": "anki-mcp"
+    }
+  }
+}
+```
+
+This exposes all 11 commands as MCP tools named `mcp__anki__<tool>` (e.g. `mcp__anki__sync`, `mcp__anki__add_note`, `mcp__anki__answer_card`). Semantics match the CLI exactly — same inputs, same outputs, same sync discipline. `login` is intentionally not an MCP tool; do the one-time login via CLI during deploy.
+
 ## Commands
 
 Run `anki <cmd> --help` for flags; all commands output JSON on stdout.
