@@ -25,12 +25,6 @@
       "category": "productivity"
     },
     {
-      "name": "anki-cli",
-      "description": "Manage Anki flashcards via anki-cli (headless AnkiWeb sync client with JSON I/O) — read, create, update, delete notes and rate cards",
-      "source": "./plugins/anki-cli",
-      "category": "productivity"
-    },
-    {
       "name": "zotero-mcp",
       "description": "Zotero MCP server for managing academic references and library",
       "source": "./plugins/zotero-mcp",

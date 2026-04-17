@@ -16,12 +16,6 @@ Extract reusable lessons from session trial-and-error into skills or project doc
 
 Orchestrate Google's Gemini CLI from Claude Code for code review, web research, and parallel analysis.
 
-### anki-cli
-
-Manage Anki flashcards via the [anki-cli](https://github.com/xbghc/anki-cli) tool — headless AnkiWeb sync client with JSON I/O. Read, create, update, delete notes and rate cards without the Anki GUI.
-
-Requires `anki-cli` installed separately: `uv tool install git+https://github.com/xbghc/anki-cli`
-
 ### zotero-mcp
 
 Zotero MCP server for managing academic references and library.
@@ -40,7 +34,6 @@ Requires env: `SEMANTIC_SCHOLAR_API_KEY`
 /plugin install stitch-ui@ghm-plugins
 /plugin install distill@ghm-plugins
 /plugin install gemini-cli@ghm-plugins
-/plugin install anki-cli@ghm-plugins
 /plugin install zotero-mcp@ghm-plugins
 /plugin install semanticscholar-mcp@ghm-plugins
 ```
