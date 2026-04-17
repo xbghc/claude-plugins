@@ -1,0 +1,10 @@
+{
+  "name": "anki-cli",
+  "version": "0.1.0",
+  "description": "Use the anki-cli tool (headless Anki sync client with JSON I/O) to read, create, update, and review Anki flashcards against AnkiWeb",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "anki", "flashcards", "spaced-repetition", "srs", "ankiweb", "cli"]
+}
