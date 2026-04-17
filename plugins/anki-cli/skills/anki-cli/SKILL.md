@@ -41,7 +41,16 @@ anki login -u EMAIL                # prompts for password
 anki sync                          # first sync does a full download
 ```
 
-Credentials are stored in `~/.config/anki-cli/config.json` (0600); the collection is cached at `~/.local/share/anki-cli/collection.anki2`.
+Credentials are stored in `~/.config/anki-cli/config.json` (0600); the collection is cached at `~/.local/share/anki-cli/collection.anki2`. Both paths are persistent — you only set up once per machine.
+
+### Headless / long-running agent setup
+
+For agents that run without a terminal (pm2, cron, server bots), the interactive password prompt will hang. Two options:
+
+1. **Env vars** (recommended): set `ANKIWEB_USERNAME` and `ANKIWEB_PASSWORD` in the process environment, then run `anki login` once during first deploy. The CLI auto-reads them when flags are absent. Hostkey persists afterward, so the env vars are only needed for the one-time login — you can even remove them from `.env` after the first successful login if you prefer.
+2. **Pre-login on a dev machine**, then copy `~/.config/anki-cli/config.json` to the server.
+
+After either, call `anki sync` at least once so `~/.local/share/anki-cli/collection.anki2` exists.
 
 ## Commands
 
@@ -65,13 +74,15 @@ Run `anki <cmd> --help` for flags; all commands output JSON on stdout.
 
 ## Sync discipline
 
-The CLI is **explicit-sync**: commands never sync implicitly. The agent manages the cadence:
+The CLI is **explicit-sync**: commands never sync implicitly. Manage the cadence by task, not by session:
 
-1. At the start of a session touching Anki: `anki sync` — pull latest remote state.
-2. Do the work (queries / writes).
-3. Before ending the session: `anki sync` — push local changes to AnkiWeb so the user sees them on desktop/mobile.
+1. **Before a block of anki work**: `anki sync` — pull so you see what the user did on desktop/mobile since last time.
+2. **Do the work** — queries / writes, in any order.
+3. **After the block**: `anki sync` — push so the user's next device sync sees your changes.
 
-If you skip the final sync, writes stay local and never reach AnkiWeb.
+A "block" is whatever coherent set of operations the current user turn implies. For interactive chat, one sync before any anki tool calls and one after is plenty. For autonomous / scheduled jobs (cron-triggered review summaries, proactive chats), sync at both ends of the job — the user may edit on their phone between runs.
+
+Skipping the final sync is the #1 mistake: writes stay local and AnkiWeb (phone, desktop) never sees them.
 
 ## Typical workflows
 
