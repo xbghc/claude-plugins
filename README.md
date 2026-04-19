@@ -25,6 +25,10 @@ Bundles two MCP servers for academic research:
 
 Requires env: `ZOTERO_API_KEY`, `ZOTERO_USER_ID`, `SEMANTIC_SCHOLAR_API_KEY`
 
+### verify-before-respond
+
+Suppresses sycophantic agreement. Forces investigation (read code, check docs, verify facts) before agreeing, disagreeing, or implementing any user input. Generalizes superpowers' `receiving-code-review` and `verification-before-completion` patterns to all user inputs, not just code review or completion claims.
+
 ## Installation
 
 ```
@@ -32,6 +36,7 @@ Requires env: `ZOTERO_API_KEY`, `ZOTERO_USER_ID`, `SEMANTIC_SCHOLAR_API_KEY`
 /plugin install distill@ghm-plugins
 /plugin install gemini-cli@ghm-plugins
 /plugin install academic-mcp@ghm-plugins
+/plugin install verify-before-respond@ghm-plugins
 ```
 
 ## License

@@ -1,0 +1,10 @@
+{
+  "name": "verify-before-respond",
+  "version": "0.1.0",
+  "description": "Investigate before responding: check facts and feasibility before agreeing, disagreeing, or implementing any user input",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "anti-sycophancy", "verification", "feasibility", "evidence-first"]
+}

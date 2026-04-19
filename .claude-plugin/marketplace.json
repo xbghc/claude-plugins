@@ -31,6 +31,12 @@
       "category": "productivity"
     },
     {
+      "name": "verify-before-respond",
+      "description": "Investigate before responding: check facts and feasibility before agreeing, disagreeing, or implementing any user input",
+      "source": "./plugins/verify-before-respond",
+      "category": "productivity"
+    },
+    {
       "name": "telegram",
       "description": "Telegram bot integration: MCP server for messaging + listen-process-reply loop skill",
       "source": "./plugins/telegram",
