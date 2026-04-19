@@ -41,6 +41,12 @@
       "description": "Telegram bot integration: MCP server for messaging + listen-process-reply loop skill",
       "source": "./plugins/telegram",
       "category": "productivity"
+    },
+    {
+      "name": "jules-workflow",
+      "description": "Delegate multi-file coding tasks to Google's Jules async agent via the jules CLI",
+      "source": "./plugins/jules-workflow",
+      "category": "productivity"
     }
   ]
 }

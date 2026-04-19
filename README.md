@@ -29,6 +29,10 @@ Requires env: `ZOTERO_API_KEY`, `ZOTERO_USER_ID`, `SEMANTIC_SCHOLAR_API_KEY`
 
 Suppresses sycophantic agreement. Forces investigation (read code, check docs, verify facts) before agreeing, disagreeing, or implementing any user input. Generalizes superpowers' `receiving-code-review` and `verification-before-completion` patterns to all user inputs, not just code review or completion claims.
 
+### jules-workflow
+
+Delegate multi-file coding tasks to Google's Jules async agent. Pairs with the [`@xbghc/jules-cli`](https://www.npmjs.com/package/@xbghc/jules-cli) npm package for background `wait` — Claude is notified when the session hits a terminal state, without blocking the conversation.
+
 ## Installation
 
 ```
@@ -37,6 +41,7 @@ Suppresses sycophantic agreement. Forces investigation (read code, check docs, v
 /plugin install gemini-cli@ghm-plugins
 /plugin install academic-mcp@ghm-plugins
 /plugin install verify-before-respond@ghm-plugins
+/plugin install jules-workflow@ghm-plugins
 ```
 
 ## License

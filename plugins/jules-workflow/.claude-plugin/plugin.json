@@ -1,0 +1,10 @@
+{
+  "name": "jules-workflow",
+  "version": "0.1.0",
+  "description": "Delegate multi-file coding tasks to Google's Jules async agent via the jules CLI",
+  "author": {
+    "name": "ghm"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "jules", "async-agent", "code-delegation"]
+}
