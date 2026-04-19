@@ -35,6 +35,9 @@ description: 基于用户需求的 UI 设计 skill。使用 Stitch MCP 生成 UI
 * 始终使用最新模型 `GEMINI_3_1_PRO`（通过 `modelId` 参数指定）
 * `get_screen` 的 `name` 参数格式为 `projects/{projectId}/screens/{screenId}`
 * Stitch 生成的是 Web UI，用于桌面应用（如 Qt）时作为视觉参考，需手动将设计语言转换为对应框架的实现
+* **图片上传限制**：Stitch MCP/SDK 均不支持上传参考截图（仅支持纯文字生成）。如需基于现有 UI 截图进行优化，须由用户在 [Stitch Web UI](https://stitch.withgoogle.com/) 的 Experimental Mode 中手动上传截图并生成，然后通过 MCP `list_screens` + `get_screen` 拉取结果
+* MCP 和官方 SDK（`@google/stitch-sdk`）能力完全一致（同 12 个工具），SDK 无额外轮询/重试逻辑，`list_screens` 延迟行为相同
+* 不支持删除项目或 Screen（无 `delete_project` / `delete_screen` 工具）
 
 ## 核心概念
 
@@ -101,6 +104,10 @@ description: 基于用户需求的 UI 设计 skill。使用 Stitch MCP 生成 UI
 
 #### 步骤 3：使用 Stitch 生成
 
+根据是否需要参考现有 UI 截图，选择对应的生成方式：
+
+**方式 A：纯文字生成（MCP 直接调用）**
+
 1. **获取或创建项目**：
    * 如果 `.stitch/stitch.json` 存在且包含 `projectId`，直接使用
    * 否则调用 `[prefix]:create_project`，将 ID 保存到 `.stitch/stitch.json`
@@ -109,6 +116,19 @@ description: 基于用户需求的 UI 设计 skill。使用 Stitch MCP 生成 UI
    * `prompt`：步骤 2 中组合的提示词
    * `deviceType`：`DESKTOP`（或按用户指定）
    * `modelId`：始终使用 `GEMINI_3_1_PRO`
+
+**方式 B：基于截图优化（需用户手动操作 Web UI）**
+
+当需要基于现有 UI 截图进行优化时，MCP 不支持图片上传，须引导用户：
+
+1. 提供项目链接：`https://stitch.withgoogle.com/projects/{projectId}`
+2. 告知用户在 Web UI 中：
+   * 切换到 **Experimental Mode**（如适用）
+   * 上传现有 UI 截图作为参考
+   * 输入优化提示词（可由 AI 预先编写好提供给用户复制）
+   * 点击生成
+3. 用户确认生成完成后，通过 MCP `[prefix]:list_screens` 拉取新生成的 Screen
+4. 后续流程与方式 A 相同（获取截图、更新 stitch.json 等）
 3. **获取资源**：调用 `[prefix]:get_screen` 获取：
    * `screenshot.downloadUrl` — 下载并保存为 `.stitch/queue/{name}.png`
 4. **更新 `.stitch/stitch.json`**：添加 Screen 条目，状态设为 `draft`，记录完整提示词和 screenId
@@ -195,6 +215,7 @@ project/
 | --- | --- |
 | 生成超时 | 不要重试——超时不会导致生成失败，用 `list_screens` 每 2-3 分钟轮询，15 分钟内耐心等待 |
 | 提示词过长导致组件遗漏 | 控制在 3000 字符以内，先生成整体再逐步细化 |
+| 需要基于现有 UI 截图优化 | MCP/SDK 不支持图片上传，引导用户在 Web UI Experimental Mode 手动上传截图后用 `list_screens` 拉取结果 |
 | Stitch 生成失败 | 检查提示词是否包含 `.stitch/DESIGN.md` 中的设计规范 |
 | 跨页面风格不一致 | 确保每次生成都使用了 `.stitch/DESIGN.md` |
 | 验证发现布局问题 | 调整提示词后重新生成，或在呈现时注明问题 |
