@@ -23,17 +23,14 @@ plugins/
   gemini-cli/                     # Skills plugin
     .claude-plugin/plugin.json
     skills/gemini-cli/SKILL.md
-  zotero-mcp/                     # MCP server plugin
+  academic-mcp/                   # MCP server plugin (bundled)
     .claude-plugin/plugin.json
-    .mcp.json                     # MCP server config (npx @xbghc/zotero-mcp)
-  semanticscholar-mcp/            # MCP server plugin
-    .claude-plugin/plugin.json
-    .mcp.json                     # MCP server config (npx @xbghc/semanticscholar-mcp)
+    .mcp.json                     # Two MCP servers: @xbghc/zotero-mcp + @xbghc/semanticscholar-mcp
 ```
 
 **Two types of plugins:**
 - **Skills plugins** (`stitch-ui`, `distill`, `gemini-cli`): contain `skills/` with a single `SKILL.md`. Each skill is its own plugin so users can install them independently.
-- **MCP server plugins** (`zotero-mcp`, `semanticscholar-mcp`, `telegram`): contain `.mcp.json` that defines the MCP server command and environment variables.
+- **MCP server plugins** (`academic-mcp`, `telegram`): contain `.mcp.json` that defines one or more MCP servers and their environment variables.
 
 ## Key Files
 
@@ -55,5 +52,6 @@ plugins/
 
 ## Environment Variables
 
-- `zotero-mcp`: requires `ZOTERO_API_KEY`, `ZOTERO_USER_ID`
-- `semanticscholar-mcp`: requires `SEMANTIC_SCHOLAR_API_KEY`
+- `academic-mcp`:
+  - `zotero` server: requires `ZOTERO_API_KEY`, `ZOTERO_USER_ID`
+  - `semanticscholar` server: requires `SEMANTIC_SCHOLAR_API_KEY`

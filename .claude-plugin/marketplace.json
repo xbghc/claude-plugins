@@ -25,15 +25,9 @@
       "category": "productivity"
     },
     {
-      "name": "zotero-mcp",
-      "description": "Zotero MCP server for managing academic references and library",
-      "source": "./plugins/zotero-mcp",
-      "category": "productivity"
-    },
-    {
-      "name": "semanticscholar-mcp",
-      "description": "Semantic Scholar MCP server for academic paper search and retrieval",
-      "source": "./plugins/semanticscholar-mcp",
+      "name": "academic-mcp",
+      "description": "Academic research MCP servers: Zotero (reference library) + Semantic Scholar (paper search)",
+      "source": "./plugins/academic-mcp",
       "category": "productivity"
     },
     {

@@ -16,17 +16,14 @@ Extract reusable lessons from session trial-and-error into skills or project doc
 
 Orchestrate Google's Gemini CLI from Claude Code for code review, web research, and parallel analysis.
 
-### zotero-mcp
+### academic-mcp
 
-Zotero MCP server for managing academic references and library.
+Bundles two MCP servers for academic research:
 
-Requires env: `ZOTERO_API_KEY`, `ZOTERO_USER_ID`
+- **zotero** — manage references and library (`@xbghc/zotero-mcp`)
+- **semanticscholar** — paper search and retrieval (`@xbghc/semanticscholar-mcp`)
 
-### semanticscholar-mcp
-
-Semantic Scholar MCP server for academic paper search and retrieval.
-
-Requires env: `SEMANTIC_SCHOLAR_API_KEY`
+Requires env: `ZOTERO_API_KEY`, `ZOTERO_USER_ID`, `SEMANTIC_SCHOLAR_API_KEY`
 
 ## Installation
 
@@ -34,8 +31,7 @@ Requires env: `SEMANTIC_SCHOLAR_API_KEY`
 /plugin install stitch-ui@ghm-plugins
 /plugin install distill@ghm-plugins
 /plugin install gemini-cli@ghm-plugins
-/plugin install zotero-mcp@ghm-plugins
-/plugin install semanticscholar-mcp@ghm-plugins
+/plugin install academic-mcp@ghm-plugins
 ```
 
 ## License
