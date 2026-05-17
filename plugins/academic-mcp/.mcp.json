@@ -7,8 +7,8 @@
         "@xbghc/zotero-mcp"
       ],
       "env": {
-        "ZOTERO_API_KEY": "${ZOTERO_API_KEY}",
-        "ZOTERO_USER_ID": "${ZOTERO_USER_ID}"
+        "ZOTERO_API_KEY": "${ZOTERO_API_KEY:-}",
+        "ZOTERO_USER_ID": "${ZOTERO_USER_ID:-}"
       }
     },
     "semanticscholar": {
@@ -18,7 +18,7 @@
         "@xbghc/semanticscholar-mcp"
       ],
       "env": {
-        "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY}"
+        "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY:-}"
       }
     }
   }
